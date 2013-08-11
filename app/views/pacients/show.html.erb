@@ -57,5 +57,22 @@
     <% end %>
    </table>
 </div>
+<div>
+   <table>
+   <tr>
+       <strong>Tratamentos </strong>
+   </tr>
+   <% @pacient.treatments.each do |treatment| %>
+      <tr>
+        <td><%= Procedure.find(id=treatment.procedure_id).name %></td>
+        <td><%= treatment.done %></td>
+        <td><%= link_to 'Alterar', edit_treatment_path(treatment) %></td>
+        <td><%= link_to 'Apagar', treatment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+    <% end %>
+   </table>
+</div>
+
+
 <%= link_to 'Edit', edit_pacient_path(@pacient) %> |
 <%= link_to 'Back', pacients_path %>

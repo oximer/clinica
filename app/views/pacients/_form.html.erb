@@ -43,6 +43,12 @@
     <%= render "insured_fields", :f => builder %>
   <% end %>
   <p><%= link_to_add_fields "Adicionar plano de saude", f, :insureds %></p>
+
+  <h2>Tratametos</h2>
+  <%= f.fields_for :treatments do |builder| %>
+    <%= render "treatment_fields", :f => builder %>  
+  <% end %>
+  <p><%= link_to_add_fields "Adicionar novo tratamento", f, :treatments %></p>
  
   <div class="actions">
     <%= f.submit %>

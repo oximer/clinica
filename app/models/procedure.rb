@@ -2,6 +2,7 @@ class Procedure < ActiveRecord::Base
   belongs_to :insurance
   has_one :proceduretype
   belongs_to :treatment
+ 
   validate :validate_proceduretype_id
   validate :validate_insurance_id
   validates :name,  presence: true, length: { minimum: 3 }
@@ -19,5 +20,9 @@ class Procedure < ActiveRecord::Base
             erros.add(:insurance_id, "is_invalid")
         end
      end
+
+  def name_with_insurance
+    "#{name} -> #{Insurance.find(id=insurance_id).name}"
+  end
 
 end

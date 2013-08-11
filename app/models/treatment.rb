@@ -1,14 +1,14 @@
 class Treatment < ActiveRecord::Base
 belongs_to :pacient
-has_one :procedure
-has_one :proceduretype, through: :procedure
+belongs_to :procedure
 has_many :consultations
 has_many :payers
 has_many :payments, through: :payers
-validate :validate_pacient_id
+
+#validate :validate_pacient_id
 validate :validate_procedure_id
-validates_numericality_of :discount, greater_than: 0
-validates :done,  presence: true
+validates_numericality_of :discount, :greater_than_or_equal_to => 0
+validates :done,  :inclusion => {:in => [true, false]}
 
 private
      def validate_pacient_id

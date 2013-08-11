@@ -1,7 +1,7 @@
 class Pacient < ActiveRecord::Base
   has_many :telephones, :dependent => :destroy
   has_many :insureds, :dependent => :destroy
-  has_many :treatments
+  has_many :treatments, :dependent => :destroy
   has_many :insurances, through: :insureds
   has_many :procedures, through: :treatments
   has_many :consultations, through: :treatments
@@ -14,6 +14,7 @@ class Pacient < ActiveRecord::Base
   validates :rg, presence: true
 
   accepts_nested_attributes_for :telephones, :allow_destroy => true
+  accepts_nested_attributes_for :treatments, :allow_destroy => true
   accepts_nested_attributes_for :insureds, :allow_destroy => true
 
   private
