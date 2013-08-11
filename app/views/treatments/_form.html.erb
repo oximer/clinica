@@ -1,0 +1,33 @@
+<%= form_for(@treatment) do |f| %>
+  <% if @treatment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@treatment.errors.count, "error") %> prohibited this treatment from being saved:</h2>
+
+      <ul>
+      <% @treatment.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pacient_id %><br>
+    <%= collection_select(:treatment, :pacient_id, Pacient.all, :id, :name,{:prompt   => "Select a pacient"}) %>
+  </div>
+  <div class="field">
+    <%= f.label :procedure_id %><br>
+    <%= collection_select(:treatment, :procedure_id, Procedure.all, :id, :name,{:prompt   => "Select a procedure"}) %>
+  </div>
+  <div class="field">
+    <%= f.label :discount %><br>
+    <%= f.text_field :discount %>
+  </div>
+  <div class="field">
+    <%= f.label :done %><br>
+    <%= f.check_box :done %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

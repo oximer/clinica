@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Clinica</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true  %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div>
+  <div>
+      <%= link_to 'Pacientes', pacients_path %>
+  </div>
+  <div>
+      <%= link_to 'Convenios', insurances_path %>
+  </div>
+  <div>
+      <%= link_to 'Financeiro', payers_path %>
+  </div>
+  <div>
+      <%= link_to 'Produtividade', pacients_path %>
+  </div>
+</div>
+<%= yield %>
+
+</body>
+</html>

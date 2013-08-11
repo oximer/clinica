@@ -1,0 +1,25 @@
+<%= form_for(@insured) do |f| %>
+  <% if @insured.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@insured.errors.count, "error") %> prohibited this insured from being saved:</h2>
+
+      <ul>
+      <% @insured.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :pacient_id %><br>
+    <%= collection_select(:insured, :pacient_id, Pacient.all, :id, :name,{:prompt   => "Select a pacient"}) %>
+  </div>
+  <div class="field">
+    <%= f.label :insurance_id %><br>
+    <%= collection_select(:insured, :insurance_id, Insurance.all, :id, :name,{:prompt   => "Select a insurance"}) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

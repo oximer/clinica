@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  payment_id: 1
+  treatment_id: 1
+  date: 2013-08-05 19:24:54
+
+two:
+  payment_id: 1
+  treatment_id: 1
+  date: 2013-08-05 19:24:54

@@ -1,0 +1,29 @@
+<%= form_for(@payer) do |f| %>
+  <% if @payer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@payer.errors.count, "error") %> prohibited this payer from being saved:</h2>
+
+      <ul>
+      <% @payer.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :payment_id %><br>
+    <%= f.number_field :payment_id %>
+  </div>
+  <div class="field">
+    <%= f.label :treatment_id %><br>
+    <%= f.number_field :treatment_id %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.datetime_select :date %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,5 @@
+<p class="fields">
+   <%= f.hidden_field :_destroy %>
+   <%= f.collection_select(:insurance_id, Insurance.all, :id, :name,{:prompt   => "Selecione um plano de saude"}) %>
+   <%= link_to_function "remove", "remove_fields(this)" %>
+</p>

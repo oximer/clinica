@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  proceduretype_id: 1
+  insurance_id: 1
+  name: MyString
+  description: MyText
+  value: 1.5
+  followup: 1
+
+two:
+  proceduretype_id: 1
+  insurance_id: 1
+  name: MyString
+  description: MyText
+  value: 1.5
+  followup: 1

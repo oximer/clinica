@@ -1,0 +1,29 @@
+<h1>Listing proceduretypes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Followup</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @proceduretypes.each do |proceduretype| %>
+      <tr>
+        <td><%= proceduretype.name %></td>
+        <td><%= proceduretype.followup %></td>
+        <td><%= link_to 'Show', proceduretype %></td>
+        <td><%= link_to 'Edit', edit_proceduretype_path(proceduretype) %></td>
+        <td><%= link_to 'Destroy', proceduretype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Proceduretype', new_proceduretype_path %>

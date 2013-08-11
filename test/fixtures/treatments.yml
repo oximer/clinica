@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pacient_id: 1
+  procedure_id: 1
+  discount: 1.5
+  done: false
+
+two:
+  pacient_id: 1
+  procedure_id: 1
+  discount: 1.5
+  done: false

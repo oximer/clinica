@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pacient_id: 1
+  ddd: 1
+  telefone: 1
+  preferred: false
+
+two:
+  pacient_id: 1
+  ddd: 1
+  telefone: 1
+  preferred: false

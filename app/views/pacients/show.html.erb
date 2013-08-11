@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @pacient.name %>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @pacient.address %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @pacient.email %>
+</p>
+
+<p>
+  <strong>Rg:</strong>
+  <%= @pacient.rg %>
+</p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @pacient.cpf %>
+</p>
+
+<div>
+   <table>
+   <tr>
+       <strong>Telefones:</strong>
+   </tr>
+   <% @pacient.telephones.each do |telephone| %>
+      <tr>
+        <td><%= telephone.ddd %></td>
+        <td><%= telephone.number %></td>
+        <td><%= telephone.preferred %></td>
+        <td><%= link_to 'Alterar', edit_telephone_path(telephone) %></td>
+        <td><%= link_to 'Apagar', telephone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+   </table>
+</div>
+
+
+<div>
+   <table>
+   <tr>
+       <strong>Plano de Saude:</strong>
+   </tr>
+   <% @pacient.insureds.each do |insured| %>
+      <tr>
+        <td><%= Insurance.find(id=insured.insurance_id).name %></td>
+        <td><%= link_to 'Alterar', edit_insured_path(insured) %></td>
+        <td><%= link_to 'Apagar', insured, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+   </table>
+</div>
+<%= link_to 'Edit', edit_pacient_path(@pacient) %> |
+<%= link_to 'Back', pacients_path %>

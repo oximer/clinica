@@ -1,0 +1,29 @@
+<h1>Listing insureds</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pacient</th>
+      <th>Insurance</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @insureds.each do |insured| %>
+      <tr>
+        <td><%= insured.pacient_id %></td>
+        <td><%= insured.insurance_id %></td>
+        <td><%= link_to 'Show', insured %></td>
+        <td><%= link_to 'Edit', edit_insured_path(insured) %></td>
+        <td><%= link_to 'Destroy', insured, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Insured', new_insured_path %>

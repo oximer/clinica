@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Proceduretype:</strong>
+  <%= @procedure.proceduretype_id %>
+</p>
+
+<p>
+  <strong>Insurance:</strong>
+  <%= @procedure.insurance_id %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @procedure.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @procedure.description %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @procedure.value %>
+</p>
+
+<p>
+  <strong>Followup:</strong>
+  <%= @procedure.followup %>
+</p>
+
+<%= link_to 'Edit', edit_procedure_path(@procedure) %> |
+<%= link_to 'Back', procedures_path %>

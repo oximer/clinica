@@ -1,0 +1,51 @@
+<%= form_for(@pacient) do |f| %>
+  <% if @pacient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pacient.errors.count, "error") %> prohibited this pacient from being saved:</h2>
+
+      <ul>
+      <% @pacient.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :endereco %><br>
+    <%= f.text_area :address %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :RG %><br>
+    <%= f.text_field :rg %>
+  </div>
+  <div class="field">
+    <%= f.label :CPF %><br>
+    <%= f.number_field :cpf %>
+  </div>
+
+  <h2>Telefones</h2>
+  <%= f.fields_for :telephones do |builder| %>
+    <%= render "telephone_fields", :f => builder %> 
+  <% end %>
+  <p><%= link_to_add_fields "Adicionar outro Telefone", f, :telephones %></p>
+
+  <h2>Plano de Saude</h2>
+  <%= f.fields_for :insureds do |builder| %>
+    <%= render "insured_fields", :f => builder %>
+  <% end %>
+  <p><%= link_to_add_fields "Adicionar plano de saude", f, :insureds %></p>
+ 
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+ 
+<% end %>

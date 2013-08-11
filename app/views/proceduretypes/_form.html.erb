@@ -1,0 +1,25 @@
+<%= form_for(@proceduretype) do |f| %>
+  <% if @proceduretype.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@proceduretype.errors.count, "error") %> prohibited this proceduretype from being saved:</h2>
+
+      <ul>
+      <% @proceduretype.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :followup %><br>
+    <%= f.number_field :followup %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
