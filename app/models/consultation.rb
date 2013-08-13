@@ -9,5 +9,4 @@ class Consultation < ActiveRecord::Base
            errors.add(:treatment_id, "is_invalid")
        end
      end
-
 end

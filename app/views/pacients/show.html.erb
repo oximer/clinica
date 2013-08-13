@@ -60,18 +60,42 @@
 <div>
    <table>
    <tr>
-       <strong>Tratamentos </strong>
+       <strong>Historico</strong>
    </tr>
    <% @pacient.treatments.each do |treatment| %>
-      <tr>
-        <td><%= Procedure.find(id=treatment.procedure_id).name %></td>
-        <td><%= treatment.done %></td>
-        <td><%= link_to 'Alterar', edit_treatment_path(treatment) %></td>
-        <td><%= link_to 'Apagar', treatment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
+      <% if treatment.done? %>
+        <tr class="procedure_done">
+          <td><%= Procedure.find(id=treatment.procedure_id).name %></td>
+          <td><%= link_to 'Alterar', edit_treatment_path(treatment) %></td>
+          <td><%= link_to 'Apagar', treatment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% else %>
+        <tr  class="procedure_undone">
+          <td><%= Procedure.find(id=treatment.procedure_id).name %></td>
+          <td><%= link_to 'Alterar', edit_treatment_path(treatment) %></td>
+          <td><%= link_to 'Apagar', treatment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>  
+      <% end %>
     <% end %>
    </table>
 </div>
+<div>
+   <table>
+   <tr>
+       <strong>Proximas consultas</strong>
+   </tr>
+   <% @pacient.treatments.each do |treatment| %>
+     <% Consultation.find_all_by_treatment_id(treatment.id).sort_by(&:date).each do |consultation| %>
+     <tr>
+         <% if consultation.date.future?%>
+            <td><%= consultation.date.strftime("%d/%m/%Y %H:%M") %></td>
+         <% end %>
+     </tr> 
+     <% end %>  
+   <% end %>
+   </table>
+</div>
+
 
 
 <%= link_to 'Edit', edit_pacient_path(@pacient) %> |
