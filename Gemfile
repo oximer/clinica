@@ -33,6 +33,8 @@ group :doc do
 end
 
 gem 'prototype-rails'
+
+gem 'bootstrap-sass', '2.3.2.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

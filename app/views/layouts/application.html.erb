@@ -7,21 +7,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div>
-  <div>
-      <%= link_to 'Pacientes', pacients_path %>
-  </div>
-  <div>
-      <%= link_to 'Convenios', insurances_path %>
-  </div>
-  <div>
-      <%= link_to 'Financeiro', payers_path %>
-  </div>
-  <div>
-      <%= link_to 'Produtividade', pacients_path %>
-  </div>
-</div>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to "Home", '/static_pages/home' , id: "logo" %>
+          <nav>
+            <ul class="nav pull-right">
+              <li><%= link_to "Pacientes",  pacients_path %></li>
+              <li><%= link_to "Convenios", insurances_path %></li>
+              <li><%= link_to "Financeiro", payers_path %></li>
+              <li><%= link_to "Produtividade", pacients_path %></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+<div class="container">
 <%= yield %>
-
+</div>
+<footer class="footer">
+  <small>
+    by Jose Urbano Duarte Jr
+  </small>
+  <nav>
+    <ul>
+      <li><%= link_to "About",   '#' %></li>
+      <li><%= link_to "Contact", '#' %></li>
+    </ul>
+  </nav>
+</footer>
 </body>
 </html>
