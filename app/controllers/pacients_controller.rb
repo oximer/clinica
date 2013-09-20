@@ -1,10 +1,11 @@
 class PacientsController < ApplicationController
   before_action :set_pacient, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /pacients
   # GET /pacients.json
   def index
-    @pacients = Pacient.all
+   @pacients = Pacient.order(sort_column + " " + sort_direction)   
   end
 
   # GET /pacients/1
@@ -72,6 +73,15 @@ class PacientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pacient_params
-      params.require(:pacient).permit(:name, :address, :email, :rg, :cpf, telephones_attributes: [ :id, :ddd, :number, :_destroy], insureds_attributes: [ :id, :insurance_id, :_destroy], treatments_attributes: [ :id, :procedure_id, :discount, :done, :_destroy])
+      params.require(:pacient).permit(:name, :address, :email, :rg, :cpf, telephones_attributes: [ :id, :ddd, :number, :preferred, :_destroy], insureds_attributes: [ :id, :insurance_id, :_destroy], treatments_attributes: [ :id, :procedure_id, :discount, :done, :_destroy])
     end
+  
+  def sort_column
+    Pacient.column_names.include?(params[:sort]) ? params[:sort] : "name"
+  end
+  
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
 end

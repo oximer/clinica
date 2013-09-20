@@ -1,4 +1,4 @@
-<%= form_for(@pacient) do |f| %>
+<%= form_for(@pacient, :html => {:class => 'form-horizontal'}) do |f| %>
   <% if @pacient.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pacient.errors.count, "error") %> prohibited this pacient from being saved:</h2>
@@ -11,47 +11,67 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :nome %><br>
-    <%= f.text_field :name %>
+  <div class="label label-info">Dados Cadastrais</div>
+  <div class="well">
+  <div class="control-group">
+    <%= f.label :nome, :class => "control-label" %>
+    <div class="controls" >
+    <%= f.text_field :name , :class => "span3", :placeholder => "Insira o nome do paciente…" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :endereco %><br>
+  <div class="control-group">
+    <%= f.label :endereco , :class => "control-label" %>
+    <div class="controls" >
     <%= f.text_area :address %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
+  <div class="control-group">
+    <%= f.label :email , :class => "control-label"%>
+    <div class="controls" >
+       <%= f.text_field :email %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :RG %><br>
-    <%= f.text_field :rg %>
+  <div class="control-group">
+    <%= f.label :RG , :class => "control-label"%>
+    <div class="controls" >
+       <%= f.text_field :rg , :class => 'input-small'%>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :CPF %><br>
-    <%= f.number_field :cpf %>
+  <div class="control-group">
+    <%= f.label :CPF , :class => "control-label"%>
+    <div class="controls" >
+    <%= f.text_field :cpf , :class => 'input-small'%>
+    </div>
+  </div>
   </div>
 
-  <h2>Telefones</h2>
-  <%= f.fields_for :telephones do |builder| %>
-    <%= render "telephone_fields", :f => builder %> 
-  <% end %>
-  <p><%= link_to_add_fields "Adicionar outro Telefone", f, :telephones %></p>
+  <div class="label label-info">Telefones</div>
+  <div class="well form-horizontal">
+     <%= f.fields_for :telephones do |builder| %>
+        <%= render "telephone_fields", :f => builder %> 
+      <% end %>
+      <p><%= link_to_add_fields "Adicionar outro Telefone", f, :telephones %></p>
+  </div>
 
-  <h2>Plano de Saude</h2>
-  <%= f.fields_for :insureds do |builder| %>
-    <%= render "insured_fields", :f => builder %>
-  <% end %>
-  <p><%= link_to_add_fields "Adicionar plano de saude", f, :insureds %></p>
+  <div class="label label-info">Plano de Saude</div>
+  <div class="well form-horizontal">
+      <%= f.fields_for :insureds do |builder| %>
+        <%= render "insured_fields", :f => builder %>
+      <% end %>
+      <p><%= link_to_add_fields "Adicionar plano de saude", f, :insureds %></p>
+  </div>
 
-  <h2>Tratametos</h2>
-  <%= f.fields_for :treatments do |builder| %>
-    <%= render "treatment_fields", :f => builder %>  
-  <% end %>
-  <p><%= link_to_add_fields "Adicionar novo tratamento", f, :treatments %></p>
- 
+  <div class="label label-info">Tratametos</div>
+
+  <div class="well form-horizontal">
+      <%= f.fields_for :treatments do |builder| %>
+          <%= render "treatment_fields", :f => builder %>  
+       <% end %>
+      <p><%= link_to_add_fields "Adicionar novo tratamento", f, :treatments %></p>
+  </div>
+
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Cadastrar paciente', :class => 'btn btn-primary'%>
   </div>
  
 <% end %>

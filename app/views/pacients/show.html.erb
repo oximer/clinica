@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<div class="label label-info">Dados Cadastrais:</div>
+<div class="well">
 <p>
   <strong>Nome:</strong>
   <%= @pacient.name %>
@@ -24,12 +26,21 @@
   <strong>Cpf:</strong>
   <%= @pacient.cpf %>
 </p>
+</div>
 
+<div class="label label-info">Telefones:</div>
 <div>
-   <table>
-   <tr>
-       <strong>Telefones:</strong>
-   </tr>
+   <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>DDD</th>
+      <th>Numero</th>
+      <th>Preferencial</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
    <% @pacient.telephones.each do |telephone| %>
       <tr>
         <td><%= telephone.ddd %></td>
@@ -39,15 +50,20 @@
         <td><%= link_to 'Apagar', telephone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+  </tbody>
    </table>
 </div>
 
-
+<div class="label label-info">Plano de Saude:</div>
 <div>
-   <table>
-   <tr>
-       <strong>Plano de Saude:</strong>
-   </tr>
+   <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
    <% @pacient.insureds.each do |insured| %>
       <tr>
         <td><%= Insurance.find(id=insured.insurance_id).name %></td>
@@ -57,20 +73,32 @@
     <% end %>
    </table>
 </div>
+
+<div class="label label-info">Historico</div>
 <div>
-   <table>
-   <tr>
-       <strong>Historico</strong>
-   </tr>
+   <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Data de Início</th>
+      <th>Data de Termino</th>
+      <th>Procedimentos</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
    <% @pacient.treatments.each do |treatment| %>
       <% if treatment.done? %>
-        <tr class="procedure_done">
+        <tr class="procedure_done success">
+          <td><% consulta = Consultation.find_all_by_treatment_id(treatment.id).sort_by(&:date).first %> <%= consulta == nil ? "" : consulta.date.strftime("%d/%m/%Y %H:%M") %></td>
+ 	  <td><% consulta = Consultation.find_all_by_treatment_id(treatment.id).sort_by(&:date).last %> <%= consulta == nil ? "" : consulta.date.strftime("%d/%m/%Y %H:%M") %></td>
           <td><%= Procedure.find(id=treatment.procedure_id).name %></td>
           <td><%= link_to 'Alterar', edit_treatment_path(treatment) %></td>
           <td><%= link_to 'Apagar', treatment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% else %>
-        <tr  class="procedure_undone">
+        <tr  class="procedure_undone info">
+          <td><% consulta = Consultation.find_all_by_treatment_id(treatment.id).sort_by(&:date).first %> <%= consulta == nil ? "" : consulta.date.strftime("%d/%m/%Y %H:%M") %></td>
+          <td> ------ </td>
           <td><%= Procedure.find(id=treatment.procedure_id).name %></td>
           <td><%= link_to 'Alterar', edit_treatment_path(treatment) %></td>
           <td><%= link_to 'Apagar', treatment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -79,11 +107,17 @@
     <% end %>
    </table>
 </div>
+
+<div class="label label-info">Próximas consultas</div>
 <div>
-   <table>
-   <tr>
-       <strong>Proximas consultas</strong>
-   </tr>
+  <table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Consultas</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
    <% @pacient.treatments.each do |treatment| %>
      <% Consultation.find_all_by_treatment_id(treatment.id).sort_by(&:date).each do |consultation| %>
      <tr>
@@ -98,5 +132,5 @@
 
 
 
-<%= link_to 'Edit', edit_pacient_path(@pacient) %> |
-<%= link_to 'Back', pacients_path %>
+<%= link_to 'Edit', edit_pacient_path(@pacient), :class => "btn btn-primary" %> |
+<%= link_to 'Back', pacients_path , :class => "btn" %>

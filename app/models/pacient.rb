@@ -17,10 +17,20 @@ class Pacient < ActiveRecord::Base
   accepts_nested_attributes_for :treatments, :allow_destroy => true
   accepts_nested_attributes_for :insureds, :allow_destroy => true
 
+  def preferred_telephone
+     value = Telephone.where(:pacient_id => self.id).where('preferred != ?', true).first
+     if value == nil
+	return Telephone.where(:pacient_id => self.id).first.number_with_ddd
+     else
+        value.number_with_ddd
+     end
+  end
+
   private
  
     def validate_email
         email_regex = %r{^.+@.+$}
         (email =~ email_regex)
     end
+
 end
