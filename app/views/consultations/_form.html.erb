@@ -34,7 +34,7 @@
   <div class="label label-info">Data da Consulta</div>  
   <div class="well form-inline">
     <%= f.label :date, "Data da Consulta" %>
-    <%= f.datetime_select :date, {}, :class => 'option-large'%>
+    <%= f.datetime_select :date, {:minute_step => 15}, :class => 'option-large'%>
   </div>
   <div class="actions">
     <%= f.submit 'Criar uma nova consulta', :class => 'btn btn-primary'%>
