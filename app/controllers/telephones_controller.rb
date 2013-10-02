@@ -4,7 +4,17 @@ class TelephonesController < ApplicationController
   # GET /telephones
   # GET /telephones.json
   def index
-    @telephones = Telephone.all
+    if params[:pacient_id] == nil
+        @telephones = Telephone.all
+    else
+        @pacient = Pacient.find_by_id(params[:pacient_id])
+        if @pacient == nil
+            flash.now[:error] = 'Nenhum paciente foi encontrado com esse identificador.'
+            redirect_to(Telephone, {:flash => {:alert => "Nenhum paciente foi encontrado com o identificador #{params[:pacient_id]}."}} )
+        else
+            @telephones = @pacient.telephones
+        end
+    end
   end
 
   # GET /telephones/1
@@ -64,7 +74,7 @@ class TelephonesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_telephone
-      @telephone = Telephone.find(params[:id])
+      @telephone = Telephone.find(params[:id])     
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

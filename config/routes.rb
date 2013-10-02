@@ -22,7 +22,9 @@ Clinica::Application.routes.draw do
 
   resources :indications
 
-  resources :pacients
+  resources :pacients do
+    resources :telephones
+  end
 
   root 'static_pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
