@@ -11,15 +11,32 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :treatment_id %><br>
-    <%= f.number_field :treatment_id %>
+  
+    <% treatment = Treatment.find_by_id(@consultation.treatment_id) %>
+    <% if treatment != nil %>
+        <% procedure = treatment.procedure_id %>
+        <% pacient_name = Pacient.find_by_id(treatment.pacient_id).name %>
+        <% procedure_name = Procedure.find_by_id(procedure).name %>
+        <h2><%= (procedure_name == nil) && (pacient_name == nil) ? "" : "Consulta para tratamento de " + procedure_name + " do paciente: " + pacient_name %></h2>
+    <% end %>
+
+  <div class="label label-info">Tratamento</div>
+  <div class="well form-inline">
+    <%= f.label :treatment_id, "Tratamento"%>
+    <% if @consultation.treatment_id == nil %>
+        <%= f.number_field :treatment_id %>
+    <% else %>
+        <%= f.number_field :treatment_id, :disabled => (@consultation.treatment_id == nil ? false : true) %>
+        <%= f.hidden_field :treatment_id%>
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.datetime_select :date %>
+
+  <div class="label label-info">Data da Consulta</div>  
+  <div class="well form-inline">
+    <%= f.label :date, "Data da Consulta" %>
+    <%= f.datetime_select :date, {}, :class => 'option-large'%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Criar uma nova consulta', :class => 'btn btn-primary'%>
   </div>
 <% end %>

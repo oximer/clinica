@@ -25,3 +25,7 @@ th .asc {
 th .desc {
   background-image: url(/assets/down_arrow.gif);
 }
+
+.option-large {
+  width: 120px !important;
+}

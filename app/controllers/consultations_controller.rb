@@ -15,6 +15,9 @@ class ConsultationsController < ApplicationController
   # GET /consultations/new
   def new
     @consultation = Consultation.new
+    if params[:treatment_id] != nil    
+        @consultation.treatment_id = params[:treatment_id]
+    end
   end
 
   # GET /consultations/1/edit

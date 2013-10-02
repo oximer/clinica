@@ -84,6 +84,7 @@
       <th>Procedimentos</th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
    <% @pacient.treatments.each do |treatment| %>
@@ -92,6 +93,7 @@
           <td><% consulta = Consultation.find_all_by_treatment_id(treatment.id).sort_by(&:date).first %> <%= consulta == nil ? "" : consulta.date.strftime("%d/%m/%Y %H:%M") %></td>
  	  <td><% consulta = Consultation.find_all_by_treatment_id(treatment.id).sort_by(&:date).last %> <%= consulta == nil ? "" : consulta.date.strftime("%d/%m/%Y %H:%M") %></td>
           <td><%= Procedure.find(id=treatment.procedure_id).name %></td>
+          <td></td>
           <td><%= link_to 'Alterar', edit_treatment_path(treatment) %></td>
           <td><%= link_to 'Apagar', treatment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
@@ -100,6 +102,7 @@
           <td><% consulta = Consultation.find_all_by_treatment_id(treatment.id).sort_by(&:date).first %> <%= consulta == nil ? "" : consulta.date.strftime("%d/%m/%Y %H:%M") %></td>
           <td> ------ </td>
           <td><%= Procedure.find(id=treatment.procedure_id).name %></td>
+          <td><%= link_to 'Adicionar consulta', new_consultation_path(:treatment_id => treatment.id) %></td>
           <td><%= link_to 'Alterar', edit_treatment_path(treatment) %></td>
           <td><%= link_to 'Apagar', treatment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>  
