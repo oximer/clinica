@@ -1,0 +1,5 @@
+Listar os seguros na lista paciente.
+Ajustar o cadastramento de novos convenios
+Ajustar o cadastramento de novos procedimentos.
+Criar opcao para detalhar o tratamento no detalhamento do pacient (http://localhost:3000/pacients/1)
+Quando detalhar um tratamento listas todas as consultadas associadas com ele

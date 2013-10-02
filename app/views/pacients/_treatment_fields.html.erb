@@ -1,0 +1,10 @@
+
+    <div class="well form-inline">
+        <%= f.hidden_field :_destroy %>
+        <%= f.collection_select(:procedure_id, Procedure.all, :id, :name_with_insurance ,{:prompt   => "Selecione um procedimento"}, {:class => 'input-xlarge'}) %>
+        <%= f.label :discount, "Desconto" %>
+        <%= f.text_field :discount , :class => 'input-mini'%>
+        <%= f.label :done, "Tratamento Finalizado" %>
+        <%= f.check_box :done %>
+        <%= link_to_function "remover", "remove_fields(this)", :class => "btn" %>
+    </div>
