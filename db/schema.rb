@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20130805222454) do
     t.string   "email"
     t.string   "rg"
     t.integer  "cpf"
+    t.datetime "birthday"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

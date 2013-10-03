@@ -1,0 +1,16 @@
+# Logfile created on 2013-09-25 20:25:23 -0300 by logger.rb/31641
+D, [2013-09-25T20:25:23.310973 #2632] DEBUG -- : Created logger
+D, [2013-09-25T20:26:34.917924 #2632] DEBUG -- : Created logger
+D, [2013-09-25T20:26:34.918012 #2632] DEBUG -- : etapa 2
+D, [2013-09-25T20:27:01.805817 #2632] DEBUG -- : Created logger
+D, [2013-09-25T20:27:01.805906 #2632] DEBUG -- : etapa 2
+D, [2013-09-25T20:27:01.815986 #2632] DEBUG -- : nil
+D, [2013-09-25T20:27:24.158287 #2632] DEBUG -- : Created logger
+D, [2013-09-25T20:27:24.158385 #2632] DEBUG -- : etapa 2
+D, [2013-09-25T20:27:24.167641 #2632] DEBUG -- : :treatment_id
+D, [2013-09-25T20:28:29.801565 #2632] DEBUG -- : Created logger
+D, [2013-09-25T20:28:29.801648 #2632] DEBUG -- : etapa 2
+D, [2013-09-25T20:28:29.810516 #2632] DEBUG -- : :treatment_id
+D, [2013-09-25T20:28:44.263184 #2632] DEBUG -- : Created logger
+D, [2013-09-25T20:28:44.263273 #2632] DEBUG -- : etapa 2
+D, [2013-09-25T20:28:44.272001 #2632] DEBUG -- : :treatment_id

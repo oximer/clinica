@@ -26,6 +26,11 @@
   <strong>Cpf:</strong>
   <%= @pacient.cpf %>
 </p>
+
+<p>
+  <strong>Aniversário:</strong>
+  <%= @pacient.birthday.strftime("%d/%m/%Y") %>
+</p>
 </div>
 
 <div class="label label-info">Telefones:</div>
@@ -117,7 +122,7 @@
   <thead>
     <tr>
       <th>Consultas</th>
-      <th></th>
+      <th>Procedimentos</th>
       <th></th>
     </tr>
   </thead>
@@ -126,6 +131,7 @@
      <tr>
          <% if consultation.date.future?%>
             <td><%= consultation.date.strftime("%d/%m/%Y %H:%M") %></td>
+            <td><%= Procedure.find(treatment.procedure_id).name %></td>
          <% end %>
      </tr> 
      <% end %>  

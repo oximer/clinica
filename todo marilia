@@ -1,10 +1,8 @@
-preferencial sem acento
-
 em endereço tem como colocar o campo do cep separado? facilita ate pra procurar o endereço automatico, sem precisar preencher tudo
 
 como que eu cadastro o dia que o paciente vai voltar?
 ali em tratamento quando tem por exemplo restauraçao nao tem como fazer clicar e abrir o tratamento pra eu ver o dente que foi feito? sem abrir detalhar?
-ali em proxima consulta nao tem como colocar pra qual procedimento que ele ta agendado? fica muito vago pra ver so que ele tem consulta
+
 
 nao tem como entao só alterar ao inves de apagar?
 uma coisa que eu vi no programa la da clinica na parte de telefone tem como colocar a operadora de telefone, mas nao sei se isso
@@ -20,9 +18,7 @@ pra detalhar o tratamento: colocar o numero do dente (ver odontograma) e a face 
 em detalhar tratamento, além da data da consulta, precisa ter um campo pra detalhar o que foi feito em cada consulta.
 ao inves de escrever meio de pagamento prefiro forma de pagamento =)
 
-quando for cadastrar o paciente está faltando duas informaçoes: data de nascimento e de quem ele tele indicaçao do dentista
-
-quando for cadastrar uma nova consulta pro paciente no horário de marcaçao pode colocar os minutos em tempos especificos de 5 em 5 minutos, nao tem necessidade de minuto a minuto
+quando for cadastrar o paciente está faltando a informaçoes: de quem ele tele indicaçao do dentista
 
 quando tiver uma nova consulta marcada, alem de colocar para o que o paciente está vindo naquele dia colocar também a opcao de desmarcar aquela consulta, se tiver como colocar duas opçoes, desmarcado/remarcado pelo paciente ou desmarcado/remarcado pelo dentista
 

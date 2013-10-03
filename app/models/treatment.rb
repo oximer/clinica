@@ -27,13 +27,14 @@ private
 
      def validate_done
        if self.done
-          consultation = Consultation.find_by_treatment_id(self.id)
+          consultation = Consultation.find_all_by_treatment_id(self.id, :order => "date").last
           if consultation == nil
              errors.add(:done, "Nao ha consulta associada ao tratamento")
              return
           else
-             consultation.date > Date.today
-             errors.add(:done, "Nao se pode concluir um tratamento com consultado ainda a ser realizada.")
+             if (consultation.date > Date.today)
+                errors.add(:done, "Nao se pode concluir um tratamento com consultado ainda a ser realizada.")
+             end
           end
           return true;
        end
