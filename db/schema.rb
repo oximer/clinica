@@ -106,6 +106,8 @@ ActiveRecord::Schema.define(version: 20130805222454) do
     t.integer  "procedure_id"
     t.float    "discount"
     t.boolean  "done"
+    t.string   "tooth"
+    t.string   "face"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

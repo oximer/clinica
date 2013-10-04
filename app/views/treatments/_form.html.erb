@@ -20,6 +20,14 @@
     <%= collection_select(:treatment, :procedure_id, Procedure.all, :id, :name,{:prompt   => "Select a procedure"}) %>
   </div>
   <div class="field">
+    <%= f.label :tooth %><br>
+    <%= f.select(:tooth, Treatment.list_tooths, {:prompt   => "Dente"}, {:class => 'input-small'}) %>
+  </div>
+  <div class="field">
+    <%= f.label :face %><br>
+    <%= f.select(:face,  Treatment.list_faces, {:prompt   => "Face"}, {:class => 'input-small'}) %>
+  </div>       
+  <div class="field">
     <%= f.label :discount %><br>
     <%= f.text_field :discount %>
   </div>

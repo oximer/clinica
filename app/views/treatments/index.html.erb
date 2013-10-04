@@ -3,10 +3,12 @@
 <table>
   <thead>
     <tr>
-      <th>Pacient</th>
-      <th>Procedure</th>
-      <th>Discount</th>
-      <th>Done</th>
+      <th>Paciente</th>
+      <th>Procedimento</th>
+      <th>Dente</th>
+      <th>Face</th>
+      <th>Desconto</th>
+      <th>Finalizado</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,8 +18,10 @@
   <tbody>
     <% @treatments.each do |treatment| %>
       <tr>
-        <td><%= treatment.pacient_id %></td>
-        <td><%= treatment.procedure_id %></td>
+        <td><%= Pacient.find_by_id(treatment.pacient_id).name %></td>
+        <td><%= Procedure.find_by_id(treatment.procedure_id).name %></td>
+        <td><%= treatment.tooth %></td>
+        <td><%= treatment.face %></td>
         <td><%= treatment.discount %></td>
         <td><%= treatment.done %></td>
         <td><%= link_to 'Show', treatment %></td>

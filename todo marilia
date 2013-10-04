@@ -3,7 +3,6 @@ em endereço tem como colocar o campo do cep separado? facilita ate pra procurar
 como que eu cadastro o dia que o paciente vai voltar?
 ali em tratamento quando tem por exemplo restauraçao nao tem como fazer clicar e abrir o tratamento pra eu ver o dente que foi feito? sem abrir detalhar?
 
-
 nao tem como entao só alterar ao inves de apagar?
 uma coisa que eu vi no programa la da clinica na parte de telefone tem como colocar a operadora de telefone, mas nao sei se isso
 nao, o proprio paciente fala qual que é
@@ -13,12 +12,9 @@ nao sei se fica muito complexo, mas tem como o proprio programa disparar um emai
 ali em telefone era bom deixar o ddd do numero na frente, vai que é paciente de fora
 
 em procedimentos, quando adiciona a descriçao do tratamento será que a gente nao consegue colocar um odontograma pra deixar o dente que tem que fazer o tratamento marcado?
-pra detalhar o tratamento: colocar o numero do dente (ver odontograma) e a face do dente (mesial, distal, oclusal, vestibular e lingual)
 
 em detalhar tratamento, além da data da consulta, precisa ter um campo pra detalhar o que foi feito em cada consulta.
 ao inves de escrever meio de pagamento prefiro forma de pagamento =)
-
-quando for cadastrar o paciente está faltando a informaçoes: de quem ele tele indicaçao do dentista
 
 quando tiver uma nova consulta marcada, alem de colocar para o que o paciente está vindo naquele dia colocar também a opcao de desmarcar aquela consulta, se tiver como colocar duas opçoes, desmarcado/remarcado pelo paciente ou desmarcado/remarcado pelo dentista
 

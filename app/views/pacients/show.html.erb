@@ -33,6 +33,36 @@
 </p>
 </div>
 
+<div class="label label-info">Indicado por:</div>
+<div>
+    <table class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+  <tbody>
+    <% @pacient.indicateds.each do |indicated| %>
+          <tr>
+            <td><%= Indication.find_by_id(indicated.indication_id).name %></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>            
+            <td><%= link_to 'Alterar', edit_indicated_path(indicated) %></td>
+            <td><%= link_to 'Apagar', indicated, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+  </tbody>
+   </table>
+</div>
+
 <div class="label label-info">Telefones:</div>
 <div>
    <table class="table table-striped">
@@ -87,6 +117,8 @@
       <th>Data de Início</th>
       <th>Data de Termino</th>
       <th>Procedimentos</th>
+      <th>Dente</th>
+      <th>Face</th>
       <th></th>
       <th></th>
       <th></th>
@@ -98,6 +130,8 @@
           <td><% consulta = Consultation.find_all_by_treatment_id(treatment.id).sort_by(&:date).first %> <%= consulta == nil ? "" : consulta.date.strftime("%d/%m/%Y %H:%M") %></td>
  	  <td><% consulta = Consultation.find_all_by_treatment_id(treatment.id).sort_by(&:date).last %> <%= consulta == nil ? "" : consulta.date.strftime("%d/%m/%Y %H:%M") %></td>
           <td><%= Procedure.find(id=treatment.procedure_id).name %></td>
+          <td><%=treatment.tooth%></td>
+          <td><%=treatment.face%></td>
           <td></td>
           <td><%= link_to 'Alterar', edit_treatment_path(treatment) %></td>
           <td><%= link_to 'Apagar', treatment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -107,6 +141,8 @@
           <td><% consulta = Consultation.find_all_by_treatment_id(treatment.id).sort_by(&:date).first %> <%= consulta == nil ? "" : consulta.date.strftime("%d/%m/%Y %H:%M") %></td>
           <td> ------ </td>
           <td><%= Procedure.find(id=treatment.procedure_id).name %></td>
+          <td><%=treatment.tooth%></td>
+          <td><%=treatment.face%></td>
           <td><%= link_to 'Adicionar consulta', new_consultation_path(:treatment_id => treatment.id) %></td>
           <td><%= link_to 'Alterar', edit_treatment_path(treatment) %></td>
           <td><%= link_to 'Apagar', treatment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

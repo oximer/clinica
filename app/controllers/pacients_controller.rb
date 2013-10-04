@@ -73,7 +73,7 @@ class PacientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pacient_params
-      params.require(:pacient).permit(:name, :address, :email, :rg, :cpf, :birthday, telephones_attributes: [ :id, :ddd, :number, :preferred, :_destroy], insureds_attributes: [ :id, :insurance_id, :_destroy], treatments_attributes: [ :id, :procedure_id, :discount, :done, :_destroy])
+      params.require(:pacient).permit(:name, :address, :email, :rg, :cpf, :birthday, telephones_attributes: [ :id, :ddd, :number, :preferred, :_destroy], insureds_attributes: [ :id, :insurance_id, :_destroy], treatments_attributes: [ :id, :procedure_id, :tooth, :face, :discount, :done, :_destroy], indicateds_attributes: [:indication_id, :description, :_destroy])
     end
   
   def sort_column

@@ -1,0 +1,7 @@
+<div class="well form-inline">
+   <%= f.hidden_field :_destroy %>
+   <%= f.collection_select(:indication_id, Indication.all, :id, :name,{:prompt   => "Selecione uma indicação"}, {:class => 'input-xlarge'}) %>
+   <%= f.label :description, "Descrição" %>
+   <%= f.text_field :description %>
+   <%= link_to_function "remover", "remove_fields(this)", :class => "btn" %>
+</div>

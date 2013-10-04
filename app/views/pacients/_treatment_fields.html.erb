@@ -2,6 +2,8 @@
     <div class="well form-inline">
         <%= f.hidden_field :_destroy %>
         <%= f.collection_select(:procedure_id, Procedure.all, :id, :name_with_insurance ,{:prompt   => "Selecione um procedimento"}, {:class => 'input-xlarge'}) %>
+        <%= f.select(:tooth, Treatment.list_tooths, {:prompt   => "Dente"}, {:class => 'input-small'}) %>
+        <%= f.select(:face,  Treatment.list_faces, {:prompt   => "Face"}, {:class => 'input-small'}) %>
         <%= f.label :discount, "Desconto" %>
         <%= f.text_field :discount , :class => 'input-mini'%>
         <%= f.label :done, "Tratamento Finalizado" %>

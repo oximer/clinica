@@ -3,7 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th>Indication</th>
+      <th>Paciente</th>
+      <th>Indicado por</th>
       <th>Description</th>
       <th></th>
       <th></th>
@@ -14,11 +15,13 @@
   <tbody>
     <% @indicateds.each do |indicated| %>
       <tr>
-        <td><%= indicated.indication_id %></td>
+        <td><%= Pacient.find_by_id(indicated.pacient_id).name %></td>
+        <td><%= Indication.find_by_id(indicated.indication_id).name %></td>
         <td><%= indicated.description %></td>
         <td><%= link_to 'Show', indicated %></td>
         <td><%= link_to 'Edit', edit_indicated_path(indicated) %></td>
         <td><%= link_to 'Destroy', indicated, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td></td>
       </tr>
     <% end %>
   </tbody>

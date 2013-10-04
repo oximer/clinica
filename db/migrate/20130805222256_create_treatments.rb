@@ -5,6 +5,8 @@ class CreateTreatments < ActiveRecord::Migration
       t.integer :procedure_id
       t.float :discount
       t.boolean :done
+      t.string :tooth
+      t.string :face
 
       t.timestamps
     end

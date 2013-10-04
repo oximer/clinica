@@ -51,6 +51,14 @@
   </div>
   </div>
 
+  <div class="label label-info">Indicado por</div>
+  <div class="well form-horizontal">
+     <%= f.fields_for :indicateds do |builder| %>
+        <%= render "indicated_fields", :f => builder %> 
+      <% end %>
+      <p><%= link_to_add_fields "Adicionar outra indicação", f, :indicateds %></p>
+  </div>
+
   <div class="label label-info">Telefones</div>
   <div class="well form-horizontal">
      <%= f.fields_for :telephones do |builder| %>

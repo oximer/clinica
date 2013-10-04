@@ -94,7 +94,9 @@ namespace :db do
                 Treatment.create!(:pacient_id => pacient.id,
                                   :procedure_id => rand(1..NUM_PROCEDURES),
                                   :discount => rand(1..100),
-                                  :done => false)
+                                  :done => false,
+                                  :tooth => Treatment.list_tooths.sample,
+                                  :face => Treatment.list_faces.sample)
             end
         end
 
@@ -127,7 +129,7 @@ namespace :db do
             number_indicated.times do |t|
                 Indicated.create!(:pacient_id => pacient.id ,
                                   :indication_id => rand(1..NUM_INDICATIONS),
-                                  :description => Faker::Lorem.words(rand(5..15)).join(' '))
+                                  :description => Faker::Name.name)
             end
         end
 
