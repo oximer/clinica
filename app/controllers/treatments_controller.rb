@@ -10,11 +10,15 @@ class TreatmentsController < ApplicationController
   # GET /treatments/1
   # GET /treatments/1.json
   def show
+    @consultations = Consultation.find_all_by_treatment_id(@treatment)
   end
 
   # GET /treatments/new
   def new
     @treatment = Treatment.new
+    if params[:pacient] != nil
+        @treatment.pacient_id = params[:pacient]
+    end
   end
 
   # GET /treatments/1/edit
@@ -69,6 +73,6 @@ class TreatmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def treatment_params
-      params.require(:treatment).permit(:pacient_id, :procedure_id, :discount, :done, :tooth, :face, consultations_attributes: [ :id, :treatment_id, :date, :_destroy])
+      params.require(:treatment).permit(:pacient_id, :procedure_id, :discount, :done, :tooth, :face, consultations_attributes: [ :id, :treatment_id, :date,:description, :_destroy])
     end
 end

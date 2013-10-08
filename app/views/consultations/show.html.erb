@@ -1,14 +1,31 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Treatment:</strong>
-  <%= @consultation.treatment_id %>
+  <strong>Tratamento:</strong>
+  <%= Procedure.find_by_id(Treatment.find_by_id(@consultation.treatment_id).procedure_id).name %>
 </p>
 
 <p>
-  <strong>Date:</strong>
+  <strong>Data:</strong>
   <%= @consultation.date %>
 </p>
+
+<p>
+  <strong>Descrição:</strong>
+  <%= @consultation.description %>
+</p>
+
+<p>
+  <strong>Cancelada:</strong>
+  <%= check_box_tag '@consultation', 'canceled', @consultation.canceled, disabled: true  %>
+</p>
+<% if @consultation.canceled? %>
+    <p>
+      <strong>Motivo de Cancelamento:</strong>
+      <%= @consultation.canceled_reason %>
+    </p>
+<% end %>
+
 
 <%= link_to 'Edit', edit_consultation_path(@consultation) %> |
 <%= link_to 'Back', consultations_path %>

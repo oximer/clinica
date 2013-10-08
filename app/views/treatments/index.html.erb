@@ -1,6 +1,6 @@
-<h1>Listing treatments</h1>
+<h1>Lista tratamentos</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Paciente</th>
@@ -17,21 +17,35 @@
 
   <tbody>
     <% @treatments.each do |treatment| %>
-      <tr>
-        <td><%= Pacient.find_by_id(treatment.pacient_id).name %></td>
-        <td><%= Procedure.find_by_id(treatment.procedure_id).name %></td>
-        <td><%= treatment.tooth %></td>
-        <td><%= treatment.face %></td>
-        <td><%= treatment.discount %></td>
-        <td><%= treatment.done %></td>
-        <td><%= link_to 'Show', treatment %></td>
-        <td><%= link_to 'Edit', edit_treatment_path(treatment) %></td>
-        <td><%= link_to 'Destroy', treatment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <% if treatment.done? %>        
+            <tr class="procedure_done success">
+                <td><%= Pacient.find_by_id(treatment.pacient_id).name %></td>
+                <td><%= Procedure.find_by_id(treatment.procedure_id).name %></td>
+                <td><%= treatment.tooth %></td>
+                <td><%= treatment.face %></td>
+                <td><%= treatment.discount %></td>
+                <td><%= check_box_tag 'finalizado', 'done', treatment.done, disabled: true %></td>
+                <td><%= link_to 'Detalhar', treatment , :class => "btn btn-link"%></td>
+                <td><%= link_to 'Editar', edit_treatment_path(treatment) ,:class => "btn btn-link" %></td>
+                <td><%= link_to 'Apagar', treatment, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-link"%></td>
+            </tr>
+        <% else %>
+            <tr class="procedure_done info">
+                <td><%= Pacient.find_by_id(treatment.pacient_id).name %></td>
+                <td><%= Procedure.find_by_id(treatment.procedure_id).name %></td>
+                <td><%= treatment.tooth %></td>
+                <td><%= treatment.face %></td>
+                <td><%= treatment.discount %></td>
+                <td><%= check_box_tag 'finalizado', 'done', treatment.done, disabled: true %></td>
+                <td><%= link_to 'Detalhar', treatment , :class => "btn btn-link"%></td>
+                <td><%= link_to 'Editar', edit_treatment_path(treatment) ,:class => "btn btn-link" %></td>
+                <td><%= link_to 'Apagar', treatment, method: :delete, data: { confirm: 'Are you sure?' } , :class => "btn btn-link"%></td>
+            </tr>
+        <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Treatment', new_treatment_path %>
+<%= link_to 'Adicionar tratamento', new_treatment_path %>

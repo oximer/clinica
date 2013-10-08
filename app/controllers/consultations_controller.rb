@@ -1,5 +1,5 @@
 class ConsultationsController < ApplicationController
-  before_action :set_consultation, only: [:show, :edit, :update, :destroy]
+  before_action :set_consultation, only: [:show, :edit, :update, :destroy, :cancel]
 
   # GET /consultations
   # GET /consultations.json
@@ -22,6 +22,13 @@ class ConsultationsController < ApplicationController
 
   # GET /consultations/1/edit
   def edit
+    if params[:cancel] != nil 
+        params[:cancel] == true
+        session[:return_to] ||= request.referer
+        @consultation.canceled = true;
+        @consultation.save
+        redirect_to session.delete(:return_to), notice: "Consulta cancelada"
+    end
   end
 
   # POST /consultations
@@ -72,6 +79,6 @@ class ConsultationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consultation_params
-      params.require(:consultation).permit(:treatment_id, :date)
+      params.require(:consultation).permit(:treatment_id, :date, :description, :canceled, :canceled_reason)
     end
 end

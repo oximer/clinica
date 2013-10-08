@@ -1,34 +1,61 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Pacient:</strong>
-  <%= @treatment.pacient_id %>
-</p>
+<div class="label label-info">Tratamento:</div>
+<div class="well">
+    <p>
+      <strong>Paciente:</strong>
+      <%= Pacient.find_by_id(@treatment.pacient_id).name %>
+    </p>
 
-<p>
-  <strong>Procedure:</strong>
-  <%= @treatment.procedure_id %>
-</p>
+    <p>
+      <strong>Procedimento:</strong>
+      <%= Procedure.find_by_id(@treatment.procedure_id).name %>
+    </p>
 
-<p>
-  <strong>Tooth:</strong>
-  <%= @treatment.tooth %>
-</p>
+    <p>
+      <strong>Dente:</strong>
+      <%= @treatment.tooth %>
+    </p>
 
-<p>
-  <strong>Face:</strong>
-  <%= @treatment.face %>
-</p>
+    <p>
+      <strong>Face:</strong>
+      <%= @treatment.face %>
+    </p>
 
-<p>
-  <strong>Discount:</strong>
-  <%= @treatment.discount %>
-</p>
+    <p>
+      <strong>Desconto:</strong>
+      <%= @treatment.discount %>
+    </p>
 
-<p>
-  <strong>Done:</strong>
-  <%= @treatment.done %>
-</p>
+    <p>
+      <strong>Finalizado:</strong>
+      <%= @treatment.done %>
+    </p>
+</div>
+
+<div class="label label-info">Consultas:</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @consultations.each do |consultation| %>
+      <tr>
+        <td><%= consultation.date.strftime("%d/%m/%Y %H:%M") %></td>
+        <td><%= link_to 'Detalhar', consultation %></td>
+        <td><%= link_to 'Editar', edit_consultation_path(consultation) %></td>
+        <td><%= link_to 'Apagar', consultation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
 <%= link_to 'Edit', edit_treatment_path(@treatment) %> |
 <%= link_to 'Back', treatments_path %>

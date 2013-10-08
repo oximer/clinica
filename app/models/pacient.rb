@@ -27,6 +27,26 @@ class Pacient < ActiveRecord::Base
      end
   end
 
+ def insurance_list
+    list = ""
+    insureds = Insured.find_all_by_pacient_id(self.id)
+    insureds.each do |insured|
+        insurances = Insurance.find_all_by_id(insured.insurance_id)
+        insurances.each do |insurance|
+            if insured == insureds.last
+                list = list + insurance.name
+            else
+                list = list + insurance.name + ",<br/>"
+            end
+        end
+    end
+    return list.strip
+  end   
+
+
+    #Insurance.find_by_id(Insured.find_by_pacient_id(pacient.id).insurance_id).name
+
+
   private
  
     def validate_email

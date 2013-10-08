@@ -16,6 +16,9 @@ ActiveRecord::Schema.define(version: 20130805222454) do
   create_table "consultations", force: true do |t|
     t.integer  "treatment_id"
     t.datetime "date"
+    t.text     "description"
+    t.boolean  "canceled"
+    t.integer  "canceled_reason"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

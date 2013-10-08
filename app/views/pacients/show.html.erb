@@ -80,7 +80,7 @@
       <tr>
         <td><%= telephone.ddd %></td>
         <td><%= telephone.number %></td>
-        <td><%= telephone.preferred %></td>
+        <td><%= check_box_tag 'telephone', 'preferred', telephone.preferred, disabled: true  %></td>
         <td><%= link_to 'Alterar', edit_telephone_path(telephone) %></td>
         <td><%= link_to 'Apagar', telephone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -150,6 +150,10 @@
       <% end %>
     <% end %>
    </table>
+
+    <%= link_to 'Adicionar novo tratamento', new_treatment_path(:pacient => @pacient.id), :class => "pull-right btn btn-link" %> 
+    </br>
+    </br>  
 </div>
 
 <div class="label label-info">Próximas consultas</div>
@@ -159,6 +163,8 @@
     <tr>
       <th>Consultas</th>
       <th>Procedimentos</th>
+      <th>Dente</th>
+      <th>Face</th>
       <th></th>
     </tr>
   </thead>
@@ -166,9 +172,14 @@
      <% Consultation.find_all_by_treatment_id(treatment.id).sort_by(&:date).each do |consultation| %>
      <tr>
          <% if consultation.date.future?%>
-            <td><%= consultation.date.strftime("%d/%m/%Y %H:%M") %></td>
-            <td><%= Procedure.find(treatment.procedure_id).name %></td>
-         <% end %>
+            <% if consultation.canceled == false %>
+                <td><%= consultation.date.strftime("%d/%m/%Y %H:%M") %></td>
+                <td><%= Procedure.find(treatment.procedure_id).name %></td>
+                <td><%= treatment.tooth %></td>
+                <td>Face</td>
+                <td><%= link_to  'Cancelar', edit_consultation_path(consultation, :cancel => "true"), data: { confirm: 'Pressione OK para cancelar a consulta' } %></td>
+            <% end %>         
+        <% end %>
      </tr> 
      <% end %>  
    <% end %>

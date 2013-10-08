@@ -1,4 +1,4 @@
-NUM_PACIENTS= 10
+NUM_PACIENTS= 20
 MAX_TELEPHONES_PER_PACIENT = 3
 MAX_INSURANCES_PER_PACIENT = 2
 MAX_TREATMENTS_PER_PACIENT = 8
@@ -107,13 +107,19 @@ namespace :db do
                 if rand(1..3) == 1
                     number_consults.times do |t|                    
                         Consultation.create!(:treatment_id => treatment.id,
-                                            :date => Date.today-(10000*rand()))
+                                            :date => Date.today-(10000*rand()),
+                                            :description => Faker::Lorem.words(rand(5..15)).join(' '),
+                                            :canceled => "false",
+                                            :canceled_reason => "0")
                     end
                     treatment.update_attributes!(:done => true)
                 else
                     number_consults.times do |t|                    
                         Consultation.create!(:treatment_id => treatment.id,
-                                            :date => Date.today+(10000*rand()))
+                                             :date => Date.today+(10000*rand()),
+                                             :description => Faker::Lorem.words(rand(5..15)).join(' '),
+                                             :canceled => "false",
+                                             :canceled_reason => "0")
                     end
             end
         end

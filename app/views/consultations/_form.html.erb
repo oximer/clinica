@@ -36,7 +36,25 @@
     <%= f.label :date, "Data da Consulta" %>
     <%= f.datetime_select :date, {:minute_step => 15}, :class => 'option-large'%>
   </div>
-  <div class="actions">
-    <%= f.submit 'Criar uma nova consulta', :class => 'btn btn-primary'%>
+
+  <div class="label label-info">Descrição</div>  
+  <div class="well form-inline">
+    <%= f.label :description, "Descrição" %>
+    <%= f.text_area :description ,:rows => 5, :class => 'input-xxlarge'%>
   </div>
+
+  <div class="label label-info">Cancelada</div>  
+  <div class="well form-inline">
+    <%= f.label :canceled, "Cancelada" %>
+    <%= f.check_box :canceled %>
+    <%= f.label :canceled_reason, "Motivo do cancelamento" %>
+    <%= f.select(:canceled_reason,  Consultation.list_reasons, {:prompt   => "motivo"}, {:class => 'input-large'}) %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= f.submit 'Cadastrar consulta', :class => 'btn btn-primary'%>
+  </div>
+
 <% end %>

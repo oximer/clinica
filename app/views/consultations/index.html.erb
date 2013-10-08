@@ -1,11 +1,11 @@
-<h1>Listing consultations</h1>
+<h1>Lista de consultas</h1>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Treatment</th>
-      <th>Date</th>
-      <th></th>
+      <th>Paciente</th>
+      <th>Data</th>
+      <th>Cancelada</th>
       <th></th>
       <th></th>
     </tr>
@@ -14,8 +14,9 @@
   <tbody>
     <% @consultations.each do |consultation| %>
       <tr>
-        <td><%= consultation.treatment_id %></td>
-        <td><%= consultation.date %></td>
+        <td><%= Pacient.find_by_id(Treatment.find_by_id(consultation.treatment_id).pacient_id).name %></td>
+        <td><%= consultation.date.strftime("%d/%m/%Y %H:%M") %></td>
+        <td><%= check_box_tag 'consultation', 'canceled', consultation.canceled, disabled: true  %></td>
         <td><%= link_to 'Show', consultation %></td>
         <td><%= link_to 'Edit', edit_consultation_path(consultation) %></td>
         <td><%= link_to 'Destroy', consultation, method: :delete, data: { confirm: 'Are you sure?' } %></td>

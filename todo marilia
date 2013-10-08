@@ -13,9 +13,9 @@ ali em telefone era bom deixar o ddd do numero na frente, vai que é paciente de
 
 em procedimentos, quando adiciona a descriçao do tratamento será que a gente nao consegue colocar um odontograma pra deixar o dente que tem que fazer o tratamento marcado?
 
-em detalhar tratamento, além da data da consulta, precisa ter um campo pra detalhar o que foi feito em cada consulta.
 ao inves de escrever meio de pagamento prefiro forma de pagamento =)
 
-quando tiver uma nova consulta marcada, alem de colocar para o que o paciente está vindo naquele dia colocar também a opcao de desmarcar aquela consulta, se tiver como colocar duas opçoes, desmarcado/remarcado pelo paciente ou desmarcado/remarcado pelo dentista
+Ao clicar sobre o cancela consulta no show do paciente, apresenta combobox para escolha da razao.
 
 quando vc for fazer agenda, voce pode colocar de cores diferentes cada tipo de procedimento
+

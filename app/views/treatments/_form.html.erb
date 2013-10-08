@@ -11,31 +11,59 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :pacient_id %><br>
-    <%= collection_select(:treatment, :pacient_id, Pacient.all, :id, :name,{:prompt   => "Select a pacient"}) %>
-  </div>
-  <div class="field">
-    <%= f.label :procedure_id %><br>
-    <%= collection_select(:treatment, :procedure_id, Procedure.all, :id, :name,{:prompt   => "Select a procedure"}) %>
-  </div>
-  <div class="field">
-    <%= f.label :tooth %><br>
-    <%= f.select(:tooth, Treatment.list_tooths, {:prompt   => "Dente"}, {:class => 'input-small'}) %>
-  </div>
-  <div class="field">
-    <%= f.label :face %><br>
-    <%= f.select(:face,  Treatment.list_faces, {:prompt   => "Face"}, {:class => 'input-small'}) %>
-  </div>       
-  <div class="field">
-    <%= f.label :discount %><br>
-    <%= f.text_field :discount %>
-  </div>
-  <div class="field">
-    <%= f.label :done %><br>
-    <%= f.check_box :done %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="label label-info">Tratamento:</div>
+  <div class="form-horizontal well">
+      <div class="control-group">
+          <div class="control-label">    
+            <%= f.label :paciente %><br>
+          </div>
+          <div class="controls" >
+                <%= collection_select(:treatment, :pacient_id, Pacient.all, :id, :name,{:prompt   => "Selecione um paciente"}, :disabled => (@treatment.pacient_id == nil ? false : true)) %>
+          </div>
+      </div>    
+
+      <div class="control-group">
+        <div class="control-label">    
+            <%= f.label :procedimento %><br>
+        </div>
+        <div class="controls" >
+            <%= collection_select(:treatment, :procedure_id, Procedure.all, :id, :name,{:prompt   => "Selecione um procedimento"}) %>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="control-label"> 
+            <%= f.label :dente %><br>
+        </div>
+        <div class="controls" >
+            <%= f.select(:tooth, Treatment.list_tooths, {:prompt   => "Dente"}, {:class => 'input-small'}) %>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="control-label"> 
+            <%= f.label :face %><br>
+        </div>
+        <div class="controls" >
+            <%= f.select(:face,  Treatment.list_faces, {:prompt   => "Face"}, {:class => 'input-small'}) %>
+        </div>
+      </div>       
+      <div class="control-group">
+        <div class="control-label"> 
+            <%= f.label :desconto %><br>
+        </div>
+        <div class="controls" >
+            <%= f.text_field :discount %>
+        </div>
+      </div>
+      <div class="control-group">
+        <div class="control-label"> 
+            <%= f.label :Finalizado %><br>
+        </div>
+        <div class="controls" >
+            <%= f.check_box :done %>
+        </div>
+      </div>
+</div>
+      <div class="actions">
+        <%= f.submit 'Cadastrar tratamento ', :class => 'btn btn-primary'%>
+      </div>
 <% end %>

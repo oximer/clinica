@@ -4,8 +4,9 @@
   <thead>
     <tr>
       <th> <%= sortable "name", "Nome" %></th>
-      <th>  Telefone </th>
-      <th> <%= sortable 'email', "Email" %></th>
+      <th> Telefone </th>
+      <th> Email</th>
+      <th> Convênio </th>
       <th></th>
       <th></th>
       <th></th>
@@ -17,9 +18,10 @@
         <td><%= pacient.name %></td>
         <td><%= pacient.preferred_telephone %></td>
         <td><%= pacient.email %></td>
-        <td><%= link_to 'Detalhar', pacient , :class => "btn btn-info"%></td>
-        <td><%= link_to 'Editar', edit_pacient_path(pacient) , :class => "btn btn-primary"%></td>
-        <td><%= link_to 'Apagar', pacient, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger" %></td>
+        <td><%= raw(pacient.insurance_list) %></td>
+        <td><%= link_to 'Detalhar', pacient , :class => "btn btn-link"%></td>
+        <td><%= link_to 'Editar', edit_pacient_path(pacient) , :class => "btn btn-link"%></td>
+        <td><%= link_to 'Apagar', pacient, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-link" %></td>
       </tr>
     <% end %>
   </tbody>
