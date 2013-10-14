@@ -26,6 +26,7 @@ class ConsultationsController < ApplicationController
         params[:cancel] == true
         session[:return_to] ||= request.referer
         @consultation.canceled = true;
+        @consultation.canceled_reason = params[:canceled_reason]
         @consultation.save
         redirect_to session.delete(:return_to), notice: "Consulta cancelada"
     end

@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20130805222454) do
     t.datetime "date"
     t.text     "description"
     t.boolean  "canceled"
-    t.integer  "canceled_reason"
+    t.text     "canceled_reason"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

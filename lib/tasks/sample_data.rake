@@ -110,16 +110,24 @@ namespace :db do
                                             :date => Date.today-(10000*rand()),
                                             :description => Faker::Lorem.words(rand(5..15)).join(' '),
                                             :canceled => "false",
-                                            :canceled_reason => "0")
+                                            :canceled_reason => "")
                     end
                     treatment.update_attributes!(:done => true)
                 else
-                    number_consults.times do |t|                    
-                        Consultation.create!(:treatment_id => treatment.id,
-                                             :date => Date.today+(10000*rand()),
-                                             :description => Faker::Lorem.words(rand(5..15)).join(' '),
-                                             :canceled => "false",
-                                             :canceled_reason => "0")
+                    number_consults.times do |t|
+                        if rand(1..4) == 1                  
+                            Consultation.create!(:treatment_id => treatment.id,
+                                                 :date => Date.today+(10000*rand()),
+                                                 :description => Faker::Lorem.words(rand(5..15)).join(' '),
+                                                 :canceled => "true",
+                                                 :canceled_reason => Consultation.list_reasons.sample)
+                        else
+                            Consultation.create!(:treatment_id => treatment.id,
+                                                 :date => Date.today+(10000*rand()),
+                                                 :description => Faker::Lorem.words(rand(5..15)).join(' '),
+                                                 :canceled => "false",
+                                                 :canceled_reason => "")
+                        end
                     end
             end
         end

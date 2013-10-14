@@ -1,6 +1,7 @@
-em endereço tem como colocar o campo do cep separado? facilita ate pra procurar o endereço automatico, sem precisar preencher tudo
+em endereço tem como c
+olocar o campo do cep separado? facilita ate pra procurar o endereço automatico, sem precisar preencher tudo
 
-como que eu cadastro o dia que o paciente vai voltar?
+
 ali em tratamento quando tem por exemplo restauraçao nao tem como fazer clicar e abrir o tratamento pra eu ver o dente que foi feito? sem abrir detalhar?
 
 nao tem como entao só alterar ao inves de apagar?
@@ -9,13 +10,13 @@ nao, o proprio paciente fala qual que é
 
 nao sei se fica muito complexo, mas tem como o proprio programa disparar um email pro paciente na vespera da consulta dele? ou entao uma mensagem de texto?
 
-ali em telefone era bom deixar o ddd do numero na frente, vai que é paciente de fora
 
 em procedimentos, quando adiciona a descriçao do tratamento será que a gente nao consegue colocar um odontograma pra deixar o dente que tem que fazer o tratamento marcado?
-
+    
 ao inves de escrever meio de pagamento prefiro forma de pagamento =)
 
-Ao clicar sobre o cancela consulta no show do paciente, apresenta combobox para escolha da razao.
+Ao clicar sobre o cancelar, ajustar o posicionamento do combobox
 
 quando vc for fazer agenda, voce pode colocar de cores diferentes cada tipo de procedimento
+
 

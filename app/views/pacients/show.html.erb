@@ -161,6 +161,7 @@
   <table class="table table-striped">
   <thead>
     <tr>
+      <th style="display: none"></th>
       <th>Consultas</th>
       <th>Procedimentos</th>
       <th>Dente</th>
@@ -173,17 +174,30 @@
      <tr>
          <% if consultation.date.future?%>
             <% if consultation.canceled == false %>
+                <td style="display: none"><%= consultation.id %></td>
                 <td><%= consultation.date.strftime("%d/%m/%Y %H:%M") %></td>
                 <td><%= Procedure.find(treatment.procedure_id).name %></td>
                 <td><%= treatment.tooth %></td>
-                <td>Face</td>
-                <td><%= link_to  'Cancelar', edit_consultation_path(consultation, :cancel => "true"), data: { confirm: 'Pressione OK para cancelar a consulta' } %></td>
+                <td><%= treatment.face %></td>
+                <td><%= link_to_function  'Cancelar', "window.myValue = #{consultation.id}" ,:class => "cancel_consult_link"%></td>
             <% end %>         
         <% end %>
      </tr> 
      <% end %>  
    <% end %>
    </table>
+</div>
+
+<div class="modal-popup">
+    <div class="side">   
+    <%= select(:consultations, "cancel_reason", Consultation.list_reasons, {:prompt   => "Selecione um motivo"}, {:class => 'input-xlarge', :id => "cancel_consult_combo"}) %>
+    </div>
+    <div class="side">
+        <%= link_to  'Confirmar', @generic_path, :class => "btn btn-danger", :id => "cancel_consult_confirm" %></td>
+    </div>
+    <div class="side">  
+        <button class="btn cancel_popup">cancel</button>
+    </div>
 </div>
 
 

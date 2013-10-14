@@ -29,3 +29,8 @@ th .desc {
 .option-large {
   width: 120px !important;
 }
+
+.noscroll {
+position: fixed;
+width:100%;
+}

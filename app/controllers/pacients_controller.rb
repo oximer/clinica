@@ -11,6 +11,16 @@ class PacientsController < ApplicationController
   # GET /pacients/1
   # GET /pacients/1.json
   def show
+   consult_tmp = Consultation.create(:treatment_id => 1,
+                                   :date => Date.today+(10000*rand()),
+                                   :description => "",
+                                   :canceled => "false",
+                                   :canceled_reason => "XYWZ");
+    path = edit_consultation_path(consult_tmp, :cancel => "true", :canceled_reason => consult_tmp.canceled_reason);
+    @generic_path = path
+    path = path.gsub("#{consult_tmp.id}",":id");
+    path = path.gsub("#{consult_tmp.canceled_reason}",":canceled_reason");
+    @generic_path = path
   end
 
   # GET /pacients/new

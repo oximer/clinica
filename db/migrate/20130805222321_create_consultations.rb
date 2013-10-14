@@ -5,7 +5,7 @@ class CreateConsultations < ActiveRecord::Migration
       t.datetime :date
       t.text :description
       t.boolean :canceled
-      t.integer :canceled_reason
+      t.text :canceled_reason
 
       t.timestamps
     end
